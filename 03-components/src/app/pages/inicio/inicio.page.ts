@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
+import { Componente } from '../../interfaces/interfaces';
+import { DataService } from '../../services/data.service';
+import { Observable } from 'rxjs';
 
-interface Componente {
-  icon: string;
-  name: string;
-  redirectTo: string;
-}
 
 
 @Component({
@@ -14,23 +13,18 @@ interface Componente {
 })
 export class InicioPage implements OnInit {
 
-  componentes: Componente[] = [
-    {
-      icon: 'american-football-outline',
-      name: 'Action Sheet',
-      redirectTo: '/action-sheet'
-    },
-    {
-      icon: 'logo-apple-appstore',
-      name: 'Alert',
-      redirectTo: '/alert'
-    }
-  ];
+  componentes$: Observable<Componente[]>;
 
 
-  constructor() { }
+  constructor(
+      private menuController: MenuController,
+      private dataService:DataService
+      ) { }
 
   ngOnInit() {
+    this.componentes$ = this.dataService.getMenuOpts();
   }
+
+  // mosrarMenu = () => this.menuController.open();
 
 }

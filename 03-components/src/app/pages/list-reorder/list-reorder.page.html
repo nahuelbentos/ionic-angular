@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="primary">List-reorder</ion-title>
+
+    <ion-buttons slot="start"  slot="end">
+      <ion-button (click)=" isDisabled = !isDisabled"> Toggle </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-reorder-group [disabled]="isDisabled" (ionItemReorder)="doReorder( $event )">
+      <ion-item *ngFor="let personaje of personajes">
+        <ion-label> {{personaje}} </ion-label>
+
+        <ion-reorder slot="end">
+          <ion-icon name="pizza"></ion-icon>
+        </ion-reorder>
+      </ion-item>
+    </ion-reorder-group>
+  </ion-list>
+</ion-content>
