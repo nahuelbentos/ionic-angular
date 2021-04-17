@@ -11,7 +11,7 @@ import { PeliculaDetalle } from '../../interfaces/interfaces';
 })
 export class SlideshowPosterComponent implements OnInit {
 
-  @Input()  peliculas: Pelicula[] | PeliculaDetalle[] = [];
+  @Input()  peliculas: any[] = [];
 
   slidesOpts = {
     slidesPerView: 3.3,
